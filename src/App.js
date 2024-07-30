@@ -1,17 +1,46 @@
-import React from 'react';
+import React, { Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
+import "./style.css";
+import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import { Ground } from "./Ground";
+
+function CarShow() {
+  return (
+    <>
+      <OrbitControls target={[0, 0.35, 0]} maxPolarAngle={1.45} />
+      <PerspectiveCamera makeDefault fov={50} position={[3, 2, 5]} />
+      <color args={[0, 0, 0]} attach="background" />
+
+      <spotLight
+        color={[1, 0.25, 0.7]}
+        castShadow
+        intensity={150}
+        angle={0.6}
+        penumbra={0.5}
+        position={[-5, 5, 0]}
+        shadow-bias={-0.0001}
+      />
+      <spotLight
+        color={[0.14, 0.5, 1]}
+        castShadow
+        intensity={200}
+        angle={0.6}
+        penumbra={0.5}
+        position={[-5, 5, 0]}
+        shadow-bias={-0.0001}
+      />
+      <Ground />
+    </>
+  );
+}
 
 function App() {
   return (
-    <div style={{ textAlign: 'center' }}>
-      <header>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense fallback={null}>
+      <Canvas shadows>
+        <CarShow />
+      </Canvas>
+    </Suspense>
   );
 }
 

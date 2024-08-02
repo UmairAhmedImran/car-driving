@@ -1,7 +1,11 @@
 import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import "./style.css";
-import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import {
+  Environment,
+  OrbitControls,
+  PerspectiveCamera,
+} from "@react-three/drei";
 import { Ground } from "./Ground";
 import { Car } from "./Car";
 
